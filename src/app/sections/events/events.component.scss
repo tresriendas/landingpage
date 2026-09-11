@@ -1,0 +1,79 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.events {
+  padding-block: var(--space-6);
+}
+
+.events__container {
+  @include container;
+}
+
+.events__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.events__kicker {
+  @include kicker-label;
+}
+
+.events__title {
+  @include heading-section;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin-top: var(--space-2);
+  max-width: 22ch;
+}
+
+.btn--secondary {
+  @include button-pill(var(--color-white), var(--color-green-dark), var(--color-border));
+}
+
+.events__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.events__card {
+  @include card;
+  padding: var(--space-4);
+}
+
+.events__date {
+  @include kicker-label;
+  color: var(--color-green-dark);
+}
+
+.events__card-title {
+  @include heading-section;
+  font-size: 1.1rem;
+  margin-top: var(--space-2);
+}
+
+.events__place {
+  @include body-text;
+  font-size: 0.9rem;
+  margin-top: var(--space-1);
+}
+
+@media (min-width: 640px) {
+  .events__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .events__head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .events__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

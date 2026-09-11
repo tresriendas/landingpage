@@ -1,0 +1,21 @@
+<section class="events" id="eventos">
+  <div class="events__container">
+    <div class="events__head">
+      <div>
+        <p class="events__kicker">Eventos</p>
+        <h2 class="events__title">Agenda ecuestre siempre actualizada</h2>
+      </div>
+      <a class="btn btn--secondary" href="#eventos">Ver todos los eventos</a>
+    </div>
+
+    <div class="events__grid">
+      @for (event of events; track event.title) {
+        <article class="events__card">
+          <span class="events__date">{{ event.date }}</span>
+          <h3 class="events__card-title">{{ event.title }}</h3>
+          <p class="events__place">{{ event.place }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

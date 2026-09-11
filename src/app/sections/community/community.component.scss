@@ -1,0 +1,67 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.community {
+  padding-block: var(--space-6);
+}
+
+.community__container {
+  @include container;
+}
+
+.community__kicker {
+  @include kicker-label;
+}
+
+.community__title {
+  @include heading-section;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin-top: var(--space-2);
+  max-width: 24ch;
+}
+
+.community__lead {
+  @include body-text;
+  margin-top: var(--space-3);
+  max-width: 56ch;
+}
+
+.community__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.community__card {
+  @include card;
+}
+
+.community__icon {
+  font-size: 1.8rem;
+  display: inline-block;
+}
+
+.community__card-title {
+  @include heading-section;
+  font-size: 1.15rem;
+  margin-top: var(--space-3);
+}
+
+.community__card-text {
+  @include body-text;
+  font-size: 0.95rem;
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .community__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .community__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

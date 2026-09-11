@@ -1,0 +1,77 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.hero {
+  padding-block: var(--space-6) var(--space-5);
+}
+
+.hero__container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.hero__kicker {
+  @include kicker-label;
+}
+
+.hero__title {
+  @include heading-hero;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+}
+
+.hero__title-accent {
+  display: block;
+  color: var(--color-gold);
+}
+
+.hero__lead {
+  @include body-text;
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 340px;
+}
+
+.btn {
+  @include button-pill(var(--color-green-dark), var(--color-white));
+}
+
+.btn--secondary {
+  @include button-pill(var(--color-white), var(--color-green-dark), var(--color-border));
+}
+
+.hero__stats {
+  margin-top: var(--space-4);
+}
+
+.hero__media {
+  @include container;
+  margin-top: var(--space-6);
+}
+
+.hero__media-art {
+  width: 100%;
+  height: clamp(220px, 40vw, 460px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 900px) {
+  .hero__actions {
+    flex-direction: row;
+    max-width: none;
+  }
+
+  .hero__title-accent {
+    display: inline;
+  }
+}

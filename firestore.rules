@@ -1,0 +1,27 @@
+rules_version = '2';
+
+// Reglas de seguridad para el proyecto Firebase de Equestris.
+// Pegar este contenido en Firebase Console > Firestore Database > Reglas
+// (o desplegar con `firebase deploy --only firestore:rules` si se agrega Firebase CLI).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Colección donde el popup de la landing guarda los contactos capturados.
+    match /Contact/{contactId} {
+      // Solo se permite crear documentos nuevos con firstName, lastName y un email con formato válido.
+      allow create: if request.resource.data.keys().hasOnly(['firstName', 'lastName', 'email', 'createdAt', 'source'])
+                    && request.resource.data.firstName is string
+                    && request.resource.data.firstName.size() > 0
+                    && request.resource.data.lastName is string
+                    && request.resource.data.lastName.size() > 0
+                    && request.resource.data.email is string
+                    && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$');
+      // Nadie puede leer, modificar ni borrar contactos desde el cliente.
+      allow read, update, delete: if false;
+    }
+
+    // Cualquier otra colección queda bloqueada por defecto.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

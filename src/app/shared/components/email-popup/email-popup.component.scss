@@ -1,0 +1,130 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.popup {
+  position: relative;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 0;
+  max-width: 420px;
+  width: calc(100vw - var(--space-5));
+  box-shadow: var(--shadow-md);
+  background: var(--color-white);
+
+  &::backdrop {
+    background: rgba(18, 40, 31, 0.55);
+  }
+}
+
+.popup__body {
+  padding: var(--space-6) var(--space-5) var(--space-5);
+}
+
+.popup__body--center {
+  text-align: center;
+}
+
+.popup__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-cream);
+  color: var(--color-green-dark);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.popup__kicker {
+  @include kicker-label;
+}
+
+.popup__title {
+  @include heading-section;
+  font-size: 1.4rem;
+  margin-top: var(--space-2);
+}
+
+.popup__text {
+  @include body-text;
+  font-size: 0.95rem;
+  margin-top: var(--space-2);
+}
+
+.popup__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background: var(--color-green-dark);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.popup__row {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.popup__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.popup__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-green-dark);
+}
+
+.popup__input {
+  padding: 12px var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-gold);
+  }
+}
+
+.popup__error {
+  color: #b3261e;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.popup__submit {
+  @include button-pill(var(--color-green-dark), var(--color-white));
+  margin-top: var(--space-2);
+  width: 100%;
+}
+
+.popup__already {
+  display: block;
+  margin: var(--space-4) auto 0;
+  border: none;
+  background: none;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+}

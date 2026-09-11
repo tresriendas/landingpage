@@ -1,0 +1,18 @@
+<section class="services" id="servicios">
+  <div class="services__container">
+    <p class="services__kicker">Servicios</p>
+    <h2 class="services__title">Todo lo que tu caballo necesita, a un click</h2>
+    <p class="services__lead">
+      Descubrí profesionales y comercios verificados por la comunidad, listos para ayudarte.
+    </p>
+
+    <div class="services__grid">
+      @for (service of services; track service.title) {
+        <div class="services__item">
+          <span class="services__icon" aria-hidden="true">{{ service.icon }}</span>
+          <span class="services__name">{{ service.title }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

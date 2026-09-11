@@ -1,0 +1,19 @@
+<section class="community" id="comunidad">
+  <div class="community__container">
+    <p class="community__kicker">Comunidad</p>
+    <h2 class="community__title">Sumate a la comunidad ecuestre más grande de Argentina</h2>
+    <p class="community__lead">
+      Un espacio pensado para todos los que viven el mundo del caballo, sea cual sea tu rol.
+    </p>
+
+    <div class="community__grid">
+      @for (group of groups; track group.title) {
+        <article class="community__card">
+          <span class="community__icon" aria-hidden="true">{{ group.icon }}</span>
+          <h3 class="community__card-title">{{ group.title }}</h3>
+          <p class="community__card-text">{{ group.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

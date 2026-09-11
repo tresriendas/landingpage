@@ -1,0 +1,26 @@
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__brand">
+      <span class="footer__name">EQUESTRIS</span>
+      <p class="footer__tagline">El mundo ecuestre conectado.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__heading">Plataforma</h3>
+      @for (link of platformLinks; track link.label) {
+        <a class="footer__link" [href]="link.href">{{ link.label }}</a>
+      }
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__heading">Compañía</h3>
+      @for (link of companyLinks; track link.label) {
+        <a class="footer__link" [href]="link.href">{{ link.label }}</a>
+      }
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>© {{ year }} Equestris. Todos los derechos reservados.</p>
+  </div>
+</footer>

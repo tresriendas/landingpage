@@ -1,0 +1,85 @@
+<dialog #dialogRef class="popup" (close)="onDialogClose()" (click)="onDialogClick($event)">
+  <button type="button" class="popup__close" aria-label="Cerrar" (click)="closeDialog()">✕</button>
+
+  @if (status() === 'success') {
+    <div class="popup__body popup__body--center">
+      <span class="popup__icon" aria-hidden="true">✓</span>
+      <h2 class="popup__title">¡Listo!</h2>
+      <p class="popup__text">Te vamos a mantener al tanto de las novedades del mundo ecuestre.</p>
+    </div>
+  } @else {
+    <div class="popup__body">
+      <p class="popup__kicker">No te pierdas nada</p>
+      <h2 class="popup__title">Enterate primero de las novedades del mundo ecuestre</h2>
+      <p class="popup__text">
+        Sumate con tus datos y recibí eventos, novedades de la comunidad y ofertas de servicios
+        antes que nadie.
+      </p>
+
+      <form class="popup__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="popup__row">
+          <div class="popup__field">
+            <label class="popup__label" for="popup-firstName">Nombre</label>
+            <input
+              id="popup-firstName"
+              type="text"
+              class="popup__input"
+              placeholder="Tu nombre"
+              formControlName="firstName"
+              autocomplete="given-name"
+            />
+            @if (form.controls.firstName.invalid && form.controls.firstName.touched) {
+              <p class="popup__error">Ingresá tu nombre.</p>
+            }
+          </div>
+
+          <div class="popup__field">
+            <label class="popup__label" for="popup-lastName">Apellido</label>
+            <input
+              id="popup-lastName"
+              type="text"
+              class="popup__input"
+              placeholder="Tu apellido"
+              formControlName="lastName"
+              autocomplete="family-name"
+            />
+            @if (form.controls.lastName.invalid && form.controls.lastName.touched) {
+              <p class="popup__error">Ingresá tu apellido.</p>
+            }
+          </div>
+        </div>
+
+        <div class="popup__field">
+          <label class="popup__label" for="popup-email">Correo electrónico</label>
+          <input
+            id="popup-email"
+            type="email"
+            class="popup__input"
+            placeholder="tuemail@ejemplo.com"
+            formControlName="email"
+            autocomplete="email"
+          />
+          @if (form.controls.email.invalid && form.controls.email.touched) {
+            <p class="popup__error">Ingresá un correo electrónico válido.</p>
+          }
+        </div>
+
+        @if (status() === 'error') {
+          <p class="popup__error">No pudimos guardar tus datos, probá de nuevo.</p>
+        }
+
+        <button type="submit" class="popup__submit" [disabled]="status() === 'loading'">
+          @if (status() === 'loading') {
+            Enviando…
+          } @else {
+            Quiero enterarme
+          }
+        </button>
+      </form>
+
+      <button type="button" class="popup__already" (click)="markAlreadyRegistered()">
+        Ya me registré
+      </button>
+    </div>
+  }
+</dialog>
