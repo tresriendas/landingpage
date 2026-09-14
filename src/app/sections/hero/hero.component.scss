@@ -58,13 +58,6 @@
   margin-top: var(--space-6);
 }
 
-.hero__media-art {
-  width: 100%;
-  height: clamp(220px, 40vw, 460px);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-}
-
 @media (min-width: 900px) {
   .hero__actions {
     flex-direction: row;

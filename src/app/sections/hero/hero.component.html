@@ -21,43 +21,6 @@
   </div>
 
   <div class="hero__media">
-    <svg class="hero__media-art" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de un caballo">
-      <defs>
-        <linearGradient id="heroSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#3f6f8f" />
-          <stop offset="55%" stop-color="#9fb98f" />
-          <stop offset="100%" stop-color="#c9d9a8" />
-        </linearGradient>
-        <linearGradient id="heroHorse" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#3a2a1c" />
-          <stop offset="100%" stop-color="#1b120b" />
-        </linearGradient>
-      </defs>
-      <rect width="800" height="500" fill="url(#heroSky)" />
-      <path d="M0 360 Q200 320 400 350 T800 340 V500 H0 Z" fill="#7c8f5a" opacity="0.8" />
-      <path d="M0 400 Q220 370 420 400 T800 390 V500 H0 Z" fill="#66794a" opacity="0.9" />
-
-      <!-- herradura, motivo ecuestre clásico -->
-      <g>
-        <path
-          d="M475 155 A130 130 0 1 1 325 155"
-          fill="none"
-          stroke="url(#heroHorse)"
-          stroke-width="46"
-          stroke-linecap="round"
-        />
-        <path
-          d="M475 155 A130 130 0 1 1 325 155"
-          fill="none"
-          stroke="var(--color-gold)"
-          stroke-width="46"
-          stroke-linecap="round"
-          opacity="0.16"
-        />
-        @for (hole of [325, 362, 400, 438, 475]; track hole) {
-          <circle [attr.cx]="hole" cy="115" r="7" fill="var(--color-cream)" opacity="0.85" />
-        }
-      </g>
-    </svg>
+    <app-hero-carousel />
   </div>
 </section>
