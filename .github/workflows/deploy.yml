@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular
-        run: npx ng build --base-href /landingpage/
+        run: npx ng build --base-href /
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
