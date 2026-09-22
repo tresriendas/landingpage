@@ -3,16 +3,19 @@
 
   @if (status() === 'success') {
     <div class="popup__body popup__body--center">
-      <span class="popup__icon" aria-hidden="true">✓</span>
-      <h2 class="popup__title">¡Listo!</h2>
-      <p class="popup__text">Te vamos a mantener al tanto de las novedades del mundo ecuestre.</p>
+      <span class="popup__icon popup__icon--success" aria-hidden="true">✓</span>
+      <h2 class="popup__title">¡Registro exitoso!</h2>
+      <p class="popup__text">
+        Su registro se realizó correctamente. Le vamos a mantener al tanto de las novedades del
+        mundo ecuestre y en breve va a recibir un email de bienvenida.
+      </p>
     </div>
   } @else {
     <div class="popup__body">
-      <p class="popup__kicker">No te pierdas nada</p>
-      <h2 class="popup__title">Enterate primero de las novedades del mundo ecuestre</h2>
+      <p class="popup__kicker">No se pierda nada</p>
+      <h2 class="popup__title">Entérese primero de las novedades del mundo ecuestre</h2>
       <p class="popup__text">
-        Sumate con tus datos y recibí eventos, novedades de la comunidad y ofertas de servicios
+        Únase con sus datos y reciba eventos, novedades de la comunidad y ofertas de servicios
         antes que nadie.
       </p>
 
@@ -24,12 +27,12 @@
               id="popup-firstName"
               type="text"
               class="popup__input"
-              placeholder="Tu nombre"
+              placeholder="Su nombre"
               formControlName="firstName"
               autocomplete="given-name"
             />
             @if (form.controls.firstName.invalid && form.controls.firstName.touched) {
-              <p class="popup__error">Ingresá tu nombre.</p>
+              <p class="popup__error">Ingrese su nombre.</p>
             }
           </div>
 
@@ -39,12 +42,12 @@
               id="popup-lastName"
               type="text"
               class="popup__input"
-              placeholder="Tu apellido"
+              placeholder="Su apellido"
               formControlName="lastName"
               autocomplete="family-name"
             />
             @if (form.controls.lastName.invalid && form.controls.lastName.touched) {
-              <p class="popup__error">Ingresá tu apellido.</p>
+              <p class="popup__error">Ingrese su apellido.</p>
             }
           </div>
         </div>
@@ -60,12 +63,27 @@
             autocomplete="email"
           />
           @if (form.controls.email.invalid && form.controls.email.touched) {
-            <p class="popup__error">Ingresá un correo electrónico válido.</p>
+            <p class="popup__error">Ingrese un correo electrónico válido.</p>
+          }
+        </div>
+
+        <div class="popup__field">
+          <label class="popup__label" for="popup-whatsapp">WhatsApp (opcional)</label>
+          <input
+            id="popup-whatsapp"
+            type="tel"
+            class="popup__input"
+            placeholder="+54 9 11 1234 5678"
+            formControlName="whatsapp"
+            autocomplete="tel"
+          />
+          @if (form.controls.whatsapp.invalid && form.controls.whatsapp.touched) {
+            <p class="popup__error">Ingrese un número de WhatsApp válido (solo números, espacios, + y -).</p>
           }
         </div>
 
         @if (status() === 'error') {
-          <p class="popup__error">No pudimos guardar tus datos, probá de nuevo.</p>
+          <p class="popup__error">No pudimos guardar sus datos, pruebe de nuevo.</p>
         }
 
         <button type="submit" class="popup__submit" [disabled]="status() === 'loading'">

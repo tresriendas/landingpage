@@ -20,6 +20,9 @@ export class HeroCarouselComponent {
   readonly slides: Slide[] = [
     { src: 'images/hero/Polo.jpeg', alt: 'Jinete practicando salto' },
     { src: 'images/hero/Salto.jpeg', alt: 'Comunidad ecuestre en un evento' },
+    { src: 'images/hero/Amansador_1.jpeg', alt: 'Amansador' },
+    { src: 'images/hero/Veterinario.jpeg', alt: 'Cuidado sanitario de los equinos' },
+    { src: 'images/hero/Herrero.jpeg', alt: 'Herrero' },
   ];
 
   readonly activeIndex = signal(0);

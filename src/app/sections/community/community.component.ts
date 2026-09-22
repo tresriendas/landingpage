@@ -16,23 +16,23 @@ interface CommunityGroup {
 export class CommunityComponent {
   readonly groups: CommunityGroup[] = [
     {
-      title: 'Jinetes y amateurs',
-      description: 'Compartí tu pasión, sumate a picadas, salidas y competencias cerca tuyo.',
+      title: 'Jinetes y Amazonas',
+      description: 'Comparta su pasión, únase a picadas, salidas y competencias cerca suyo.',
       icon: '🏇',
     },
     {
       title: 'Escuelas de equitación',
-      description: 'Dales visibilidad a tus cursos y conectá con nuevos alumnos.',
+      description: 'Dele visibilidad a sus cursos y conecte con nuevos alumnos.',
       icon: '🎓',
     },
     {
       title: 'Veterinarios y profesionales',
-      description: 'Ofrecé tus servicios a la comunidad ecuestre de todo el país.',
+      description: 'Ofrezca sus servicios a la comunidad ecuestre de todo el país.',
       icon: '🩺',
     },
     {
       title: 'Clubes e instituciones',
-      description: 'Publicá tus eventos, torneos y novedades institucionales.',
+      description: 'Publique sus eventos, torneos y novedades institucionales.',
       icon: '🏆',
     },
   ];

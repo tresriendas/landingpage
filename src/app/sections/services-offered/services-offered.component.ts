@@ -16,9 +16,11 @@ export class ServicesOfferedComponent {
   readonly services: ServiceItem[] = [
     { title: 'Herrería', icon: '🔨' },
     { title: 'Veterinaria', icon: '🩺' },
-    { title: 'Indumentaria y equipamiento', icon: '🧤' },
-    { title: 'Alimentación balanceada', icon: '🌾' },
-    { title: 'Transporte de caballos', icon: '🚛' },
-    { title: 'Entrenamiento y doma', icon: '🐎' },
+    { title: 'Tiendas', icon: '🧤' },
+    { title: 'Alimentación', icon: '🌾' },
+    { title: 'Transporte', icon: '🚛' },
+    { title: 'Entrenamiento y Amansamiento', icon: '🐎' },
+    { title: 'Suministros', icon: '📦' },
+
   ];
 }

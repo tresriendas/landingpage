@@ -7,6 +7,7 @@ type PopupStatus = 'idle' | 'loading' | 'success' | 'error';
 
 const OPEN_DELAY_MS = 800;
 const CLOSE_AFTER_SUCCESS_MS = 2000;
+const AUTO_CLOSE_MS = 60000;
 
 @Component({
   selector: 'app-email-popup',
@@ -27,6 +28,8 @@ export class EmailPopupComponent implements AfterViewInit {
   /** true mientras se cierra por "Ya me registré": evita que onDialogClose arme el reaparecer-al-clic. */
   private closingAsAlreadyRegistered = false;
 
+  private autoCloseTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
   readonly form = new FormGroup({
     firstName: new FormControl('', {
       nonNullable: true,
@@ -40,27 +43,58 @@ export class EmailPopupComponent implements AfterViewInit {
       nonNullable: true,
       validators: [Validators.required, Validators.email],
     }),
+    whatsapp: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.pattern(/^[0-9+\-\s]*$/)],
+    }),
   });
 
   ngAfterViewInit(): void {
     if (!this.visibility.shouldShowPopup()) {
       return;
     }
-    setTimeout(() => this.dialogRef.nativeElement.showModal(), OPEN_DELAY_MS);
+    setTimeout(() => {
+      this.dialogRef.nativeElement.showModal();
+      this.scheduleAutoClose();
+    }, OPEN_DELAY_MS);
   }
 
   onDialogClose(): void {
+    this.clearAutoCloseTimer();
+
     if (this.status() === 'success' || this.closingAsAlreadyRegistered) {
       this.closingAsAlreadyRegistered = false;
       return;
     }
-    // Cierre simple (X, ESC o backdrop): el próximo clic en la página vuelve a abrir el popup.
-    // El setTimeout evita que el propio clic que disparó el cierre reabra el popup al instante.
+    // Cierre simple (X, ESC, backdrop o auto-cierre por tiempo): el próximo clic en la página
+    // vuelve a abrir el popup. El setTimeout evita que el propio clic que disparó el cierre
+    // reabra el popup al instante.
     setTimeout(() => {
-      const reopen = () => this.dialogRef.nativeElement.showModal();
+      const reopen = () => {
+        this.dialogRef.nativeElement.showModal();
+        this.scheduleAutoClose();
+      };
       document.addEventListener('click', reopen, { once: true, capture: true });
       this.destroyRef.onDestroy(() => document.removeEventListener('click', reopen, { capture: true }));
     }, 0);
+  }
+
+  /** Cierra el popup solo si pasaron 15s sin completar el registro (no interrumpe un envío en curso). */
+  private scheduleAutoClose(): void {
+    this.clearAutoCloseTimer();
+    this.autoCloseTimeoutId = setTimeout(() => {
+      if (this.status() !== 'loading') {
+        this.dialogRef.nativeElement.close();
+      }
+    }, AUTO_CLOSE_MS);
+    this.destroyRef.onDestroy(() => this.clearAutoCloseTimer());
+  }
+
+  private clearAutoCloseTimer(): void {
+    if (this.autoCloseTimeoutId !== null) {
+      clearTimeout(this.autoCloseTimeoutId);
+      this.autoCloseTimeoutId = null;
+    }
   }
 
   closeDialog(): void {
