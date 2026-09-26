@@ -16,14 +16,6 @@
   margin: 0;
 }
 
-@mixin heading-section {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--color-green-dark);
-  margin: 0;
-}
-
 @mixin stat-number {
   font-family: var(--font-serif);
   font-weight: 700;

@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
+  googleAnalyticsId: '',
   firebase: {
     apiKey: 'AIzaSyCrh8tE0egusu31Uvme-72eZSV4J2TVMT8',
     authDomain: 'equestris-bb3e2.firebaseapp.com',

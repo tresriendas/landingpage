@@ -43,7 +43,7 @@
 }
 
 .popup__title {
-  @include heading-section;
+  @include heading-hero;
   font-size: 1.4rem;
   margin-top: var(--space-2);
 }

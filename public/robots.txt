@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://equestris.com.ar/sitemap.xml

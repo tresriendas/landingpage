@@ -14,16 +14,37 @@
 }
 
 .footer__name {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  font-size: 1.1rem;
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  line-height: 1;
 }
 
 .footer__tagline {
   margin-top: var(--space-2);
   color: rgba(247, 245, 240, 0.7);
   font-size: 0.9rem;
+}
+
+.footer__social {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  background: rgba(247, 245, 240, 0.1);
+  color: var(--color-cream);
+
+  &:hover {
+    background: var(--color-gold-light);
+    color: var(--color-green-dark);
+  }
 }
 
 .footer__heading {

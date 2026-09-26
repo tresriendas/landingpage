@@ -21,7 +21,7 @@
 }
 
 .events__title {
-  @include heading-section;
+  @include heading-hero;
   font-size: clamp(1.7rem, 4vw, 2.4rem);
   margin-top: var(--space-2);
   max-width: 22ch;
@@ -49,7 +49,7 @@
 }
 
 .events__card-title {
-  @include heading-section;
+  @include heading-hero;
   font-size: 1.1rem;
   margin-top: var(--space-2);
 }

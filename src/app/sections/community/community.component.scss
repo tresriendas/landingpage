@@ -14,7 +14,7 @@
 }
 
 .community__title {
-  @include heading-section;
+  @include heading-hero;
   font-size: clamp(1.7rem, 4vw, 2.4rem);
   margin-top: var(--space-2);
   max-width: 24ch;
@@ -43,7 +43,7 @@
 }
 
 .community__card-title {
-  @include heading-section;
+  @include heading-hero;
   font-size: 1.15rem;
   margin-top: var(--space-3);
 }
