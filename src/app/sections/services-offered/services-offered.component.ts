@@ -24,7 +24,6 @@ interface ServiceItem {
 export class ServicesOfferedComponent {
   readonly services: ServiceItem[] = [
     { title: 'Herrería', icon: 'herreria' },
-    { title: 'Veterinaria', icon: 'veterinaria' },
     { title: 'Tiendas', icon: 'tiendas' },
     { title: 'Alimentación', icon: 'alimentacion' },
     { title: 'Transporte', icon: 'transporte' },
