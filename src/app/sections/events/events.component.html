@@ -11,9 +11,12 @@
     <div class="events__grid">
       @for (event of events; track event.title) {
         <article class="events__card">
-          <span class="events__date">{{ event.date }}</span>
-          <h3 class="events__card-title">{{ event.title }}</h3>
-          <p class="events__place">{{ event.place }}</p>
+          <img class="events__card-image" [src]="event.image" [alt]="event.title" loading="lazy" />
+          <div class="events__card-body">
+            <span class="events__date">{{ event.date }}</span>
+            <h3 class="events__card-title">{{ event.title }}</h3>
+            <p class="events__place">{{ event.place }}</p>
+          </div>
         </article>
       }
     </div>

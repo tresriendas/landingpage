@@ -35,23 +35,41 @@
 
 .community__card {
   @include card;
+  position: relative;
+  overflow: hidden;
 }
 
-.community__icon {
-  font-size: 1.8rem;
-  display: inline-block;
+.community__card-watermark {
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  width: 120px;
+  height: 120px;
+  color: var(--color-green-dark);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .community__card-title {
   @include heading-hero;
   font-size: 1.15rem;
   margin-top: var(--space-3);
+  position: relative;
+  z-index: 1;
 }
 
 .community__card-text {
   @include body-text;
   font-size: 0.95rem;
   margin-top: var(--space-2);
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 640px) {

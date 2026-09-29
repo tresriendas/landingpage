@@ -1,8 +1,8 @@
 @use 'mixins' as *;
 
 .header {
-  background: var(--color-cream-alt);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-green-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   position: sticky;
   top: 0;
   z-index: 40;
@@ -48,13 +48,13 @@
   font-family: var(--font-sans);
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: var(--color-green-dark);
+  color: var(--color-white);
   font-size: 1rem;
 }
 
 .brand__tagline {
   font-size: 0.78rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -68,11 +68,11 @@
 .nav__link {
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--color-green-dark);
+  color: var(--color-white);
   text-decoration: none;
 
   &:hover {
-    color: var(--color-gold);
+    color: var(--color-gold-light);
   }
 }
 
@@ -100,9 +100,9 @@
 }
 
 .icon-btn--outline {
-  background: var(--color-white);
-  border: 1.5px solid var(--color-border);
-  color: var(--color-green-dark);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
 }
 
 .icon-btn--gold {
@@ -116,7 +116,7 @@
   border-radius: var(--radius-pill);
   border: none;
   background: transparent;
-  color: var(--color-green-dark);
+  color: var(--color-white);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -126,11 +126,11 @@
 .nav--mobile {
   flex-direction: column;
   gap: 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 
   .nav__link {
     padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
 }
 

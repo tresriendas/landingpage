@@ -1,0 +1,20 @@
+<div class="theme-switch" role="group" aria-label="Estilo de pantalla">
+  <button
+    type="button"
+    class="theme-switch__swatch theme-switch__swatch--clasico"
+    [class.theme-switch__swatch--active]="theme() === 'clasico'"
+    [attr.aria-pressed]="theme() === 'clasico'"
+    aria-label="Estilo Clásico"
+    title="Clásico"
+    (click)="select('clasico')"
+  ></button>
+  <button
+    type="button"
+    class="theme-switch__swatch theme-switch__swatch--nautico"
+    [class.theme-switch__swatch--active]="theme() === 'nautico'"
+    [attr.aria-pressed]="theme() === 'nautico'"
+    aria-label="Estilo Náutico"
+    title="Náutico"
+    (click)="select('nautico')"
+  ></button>
+</div>

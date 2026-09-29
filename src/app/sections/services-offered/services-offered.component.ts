@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
 
+type ServiceIcon =
+  | 'herreria'
+  | 'veterinaria'
+  | 'tiendas'
+  | 'alimentacion'
+  | 'transporte'
+  | 'entrenamiento'
+  | 'suministros';
+
 interface ServiceItem {
   title: string;
-  icon: string;
+  icon: ServiceIcon;
 }
 
 @Component({
@@ -14,13 +23,12 @@ interface ServiceItem {
 })
 export class ServicesOfferedComponent {
   readonly services: ServiceItem[] = [
-    { title: 'Herrería', icon: '🔨' },
-    { title: 'Veterinaria', icon: '🩺' },
-    { title: 'Tiendas', icon: '🧤' },
-    { title: 'Alimentación', icon: '🌾' },
-    { title: 'Transporte', icon: '🚛' },
-    { title: 'Entrenamiento y Amansamiento', icon: '🐎' },
-    { title: 'Suministros', icon: '📦' },
-
+    { title: 'Herrería', icon: 'herreria' },
+    { title: 'Veterinaria', icon: 'veterinaria' },
+    { title: 'Tiendas', icon: 'tiendas' },
+    { title: 'Alimentación', icon: 'alimentacion' },
+    { title: 'Transporte', icon: 'transporte' },
+    { title: 'Entrenamiento y Amansamiento', icon: 'entrenamiento' },
+    { title: 'Suministros', icon: 'suministros' },
   ];
 }

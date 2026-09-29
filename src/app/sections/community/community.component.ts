@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 interface CommunityGroup {
   title: string;
   description: string;
-  icon: string;
+  icon: 'jinete' | 'escuela' | 'veterinario' | 'club';
 }
 
 @Component({
@@ -18,22 +18,22 @@ export class CommunityComponent {
     {
       title: 'Jinetes y Amazonas',
       description: 'Comparta su pasión, únase a picadas, salidas y competencias cerca suyo.',
-      icon: '🏇',
+      icon: 'jinete',
     },
     {
       title: 'Escuelas de equitación',
       description: 'Dele visibilidad a sus cursos y conecte con nuevos alumnos.',
-      icon: '🎓',
+      icon: 'escuela',
     },
     {
       title: 'Veterinarios y profesionales',
       description: 'Ofrezca sus servicios a la comunidad ecuestre de todo el país.',
-      icon: '🩺',
+      icon: 'veterinario',
     },
     {
       title: 'Clubes e instituciones',
       description: 'Publique sus eventos, torneos y novedades institucionales.',
-      icon: '🏆',
+      icon: 'club',
     },
   ];
 }
