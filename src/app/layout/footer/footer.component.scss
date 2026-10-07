@@ -1,8 +1,9 @@
 @use 'mixins' as *;
 
 .footer {
-  background: var(--color-green-dark);
-  color: var(--color-cream);
+  background: var(--navy);
+  border-top: 3px solid var(--gold);
+  color: var(--white);
 }
 
 .footer__container {
@@ -14,20 +15,23 @@
 }
 
 .footer__name {
-  font-family: var(--font-script);
-  font-size: 2.2rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 27px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   line-height: 1;
 }
 
 .footer__tagline {
-  margin-top: var(--space-2);
-  color: rgba(247, 245, 240, 0.7);
-  font-size: 0.9rem;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
 }
 
 .footer__social {
   display: flex;
-  gap: var(--space-3);
+  gap: 10px;
   margin-top: var(--space-4);
 }
 
@@ -35,49 +39,53 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-pill);
-  background: rgba(247, 245, 240, 0.1);
-  color: var(--color-cream);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 161, 91, 0.35);
+  color: rgba(255, 255, 255, 0.7);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 
   &:hover {
-    background: var(--color-gold-light);
-    color: var(--color-green-dark);
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
   }
 }
 
 .footer__heading {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-gold-light);
-  margin: 0 0 var(--space-3);
+  color: var(--gold);
+  margin: 0 0 var(--space-2);
 }
 
 .footer__col {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 10px;
 }
 
 .footer__link {
-  color: rgba(247, 245, 240, 0.85);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 13px;
+  transition: color 0.2s;
 
   &:hover {
-    color: var(--color-gold-light);
+    color: var(--gold);
   }
 }
 
 .footer__bottom {
-  border-top: 1px solid rgba(247, 245, 240, 0.15);
+  @include container;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-block: var(--space-4);
-  text-align: center;
-  font-size: 0.85rem;
-  color: rgba(247, 245, 240, 0.6);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 @media (min-width: 640px) {

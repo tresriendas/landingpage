@@ -1,31 +1,27 @@
 @mixin container {
-  width: 100%;
-  max-width: var(--container-max);
+  width: min(1240px, 92vw);
   margin-inline: auto;
-  padding-inline: var(--space-4);
 }
 
-@mixin button-pill($bg, $color, $border: transparent) {
+@mixin btn-base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  padding: 14px 28px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid $border;
-  background: $bg;
-  color: $color;
+  gap: 10px;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
   font-family: var(--font-sans);
+  font-size: 13px;
   font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  letter-spacing: 0.02em;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
   }
 
   &:active {
@@ -36,22 +32,89 @@
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
+  }
+
+  svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+}
+
+/* Variantes: primary (navy), secondary (borde navy sobre claro), gold (CTA principal), outline-light (sobre navy/fotos). */
+@mixin btn($variant: primary) {
+  @include btn-base;
+
+  @if $variant == primary {
+    background: var(--navy);
+    color: var(--white);
+    &:hover { background: var(--navy-3); }
+  } @else if $variant == secondary {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy);
+    &:hover { background: var(--navy); color: var(--white); }
+  } @else if $variant == gold {
+    background: var(--gold);
+    color: var(--navy);
+    &:hover { background: #d6b06c; }
+  } @else if $variant == outline-light {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.75);
+    &:hover { background: var(--white); color: var(--navy); }
   }
 }
 
 @mixin card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  padding: var(--space-5);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-@mixin icon-badge($bg: var(--color-blanco-antiguo)) {
+@mixin card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+/* Cabecera de sección: eyebrow + título a la izquierda, acción a la derecha. */
+@mixin section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+/* Contenedor de ícono: dorado sobre navy (por defecto) o navy sobre tinte claro. */
+@mixin icon-badge($size: 48px, $variant: dark) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-md);
-  background: $bg;
-  color: var(--color-white);
+  flex-shrink: 0;
+  width: $size;
+  height: $size;
+  border-radius: var(--radius-btn);
+
+  @if $variant == dark {
+    background: var(--navy);
+    color: var(--gold);
+  } @else {
+    background: var(--tint);
+    color: var(--navy);
+  }
+
+  svg {
+    width: 50%;
+    height: 50%;
+  }
 }

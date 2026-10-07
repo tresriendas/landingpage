@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 type ServiceIcon =
   | 'herreria'
-  | 'veterinaria'
   | 'tiendas'
   | 'alimentacion'
   | 'transporte'

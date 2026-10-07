@@ -6,14 +6,16 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 12px);
 }
 
 body {
   margin: 0;
-  background: var(--color-cream);
-  color: var(--color-text-body);
+  background: var(--cream);
+  color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1,
@@ -21,6 +23,12 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+/* Palabra destacada en titulares. */
+em {
+  font-style: normal;
+  color: var(--gold);
 }
 
 img {
@@ -34,4 +42,9 @@ button {
 
 a {
   color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }

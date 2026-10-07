@@ -2,8 +2,8 @@
 @use 'typography' as *;
 
 .services {
-  padding-block: var(--space-6);
-  background: var(--color-cream-alt);
+  padding-block: 80px;
+  background: var(--cream);
 }
 
 .services__container {
@@ -15,10 +15,9 @@
 }
 
 .services__title {
-  @include heading-hero;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  margin-top: var(--space-2);
-  max-width: 24ch;
+  @include section-title;
+  margin-top: 12px;
+  max-width: 26ch;
 }
 
 .services__lead {
@@ -29,33 +28,45 @@
 
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-3);
+  grid-template-columns: 1fr;
+  gap: 18px;
   margin-top: var(--space-5);
 }
 
 .services__item {
+  @include card;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
+  min-height: 84px;
+  padding: 20px 24px;
+  border-left: 2px solid var(--gold);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+
+    .services__item-watermark {
+      opacity: 0.16;
+      transform: rotate(-8deg) scale(1.04);
+    }
+  }
 }
 
+/* Ícono representativo de cada servicio, como marca de agua en la esquina. */
 .services__item-watermark {
   position: absolute;
-  right: -14px;
+  right: -12px;
   bottom: -14px;
-  width: 72px;
-  height: 72px;
-  color: var(--color-green-dark);
+  width: 84px;
+  height: 84px;
+  color: var(--navy);
   opacity: 0.1;
+  transform: rotate(-8deg);
   pointer-events: none;
-  z-index: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 
   svg {
     width: 100%;
@@ -66,11 +77,21 @@
 .services__name {
   position: relative;
   z-index: 1;
+  padding-right: 64px;
+  font-family: var(--font-serif);
+  font-size: 20px;
   font-weight: 600;
-  color: var(--color-green-dark);
+  line-height: 1.2;
+  color: var(--navy);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 580px) {
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
   .services__grid {
     grid-template-columns: repeat(3, 1fr);
   }

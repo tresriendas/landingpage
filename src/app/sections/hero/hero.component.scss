@@ -2,15 +2,28 @@
 @use 'typography' as *;
 
 .hero {
-  padding-block: var(--space-6) var(--space-5);
+  position: relative;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(201, 161, 91, 0.08), transparent 45%),
+    var(--navy);
+  color: var(--white);
 }
 
 .hero__container {
   @include container;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: center;
+  padding-block: var(--space-6);
+}
+
+.hero__copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-4);
+  gap: 22px;
+  max-width: 560px;
 }
 
 .hero__kicker {
@@ -19,52 +32,81 @@
 
 .hero__title {
   @include heading-hero;
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  color: var(--white);
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 0.98;
 }
 
 .hero__title-accent {
   display: block;
-  color: var(--color-gold);
+  color: var(--gold);
 }
 
 .hero__lead {
   @include body-text;
-  font-size: 1.05rem;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
   max-width: 46ch;
 }
 
 .hero__actions {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  width: 100%;
-  max-width: 340px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: var(--space-2);
 }
 
-.btn {
-  @include button-pill(var(--color-green-dark), var(--color-white));
+.btn--primary {
+  @include btn(gold);
+  padding: 14px 28px;
+  font-size: 14px;
 }
 
 .btn--secondary {
-  @include button-pill(var(--color-white), var(--color-green-dark), var(--color-border));
-}
-
-.hero__stats {
-  margin-top: var(--space-4);
+  @include btn(outline-light);
+  padding: 14px 28px;
+  font-size: 14px;
 }
 
 .hero__media {
-  @include container;
-  margin-top: var(--space-6);
+  position: relative;
+  min-width: 0;
+
+  /* Filete dorado superior y derecho, como la cita enmarcada del hero de la app. */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 45%;
+    height: 45%;
+    border-top: 1px solid rgba(201, 161, 91, 0.45);
+    border-right: 1px solid rgba(201, 161, 91, 0.45);
+    border-top-right-radius: calc(var(--radius) + 8px);
+    pointer-events: none;
+  }
 }
 
-@media (min-width: 900px) {
+@media (max-width: 580px) {
   .hero__actions {
-    flex-direction: row;
-    max-width: none;
+    flex-direction: column;
+    width: 100%;
+
+    .btn--primary,
+    .btn--secondary {
+      width: 100%;
+    }
   }
 
-  .hero__title-accent {
-    display: inline;
+  .hero__media::before {
+    display: none;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero__container {
+    grid-template-columns: 1fr 1.05fr;
+    gap: var(--space-6);
+    padding-block: 80px;
   }
 }

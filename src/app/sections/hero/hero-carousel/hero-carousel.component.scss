@@ -1,10 +1,19 @@
 .carousel {
   position: relative;
   width: 100%;
-  height: clamp(220px, 40vw, 460px);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  height: clamp(240px, 38vw, 480px);
+  border-radius: var(--radius);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
   overflow: hidden;
+
+  /* Overlay náutico inferior para que flechas y puntos contrasten sobre cualquier foto. */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(14, 28, 47, 0.55), transparent 35%);
+    pointer-events: none;
+  }
 }
 
 .carousel__track {
@@ -24,21 +33,26 @@
 .carousel__arrow {
   position: absolute;
   top: 50%;
+  z-index: 1;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-pill);
-  border: none;
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--color-green-dark);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 161, 91, 0.45);
+  background: rgba(14, 28, 47, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--white);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 
   &:hover {
-    background: var(--color-white);
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
   }
 }
 
@@ -52,25 +66,27 @@
 
 .carousel__dots {
   position: absolute;
+  z-index: 1;
   bottom: var(--space-3);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  align-items: center;
   gap: var(--space-2);
 }
 
 .carousel__dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: var(--radius-pill);
   border: none;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.55);
   cursor: pointer;
   padding: 0;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: background 0.2s, width 0.25s ease;
 
   &--active {
-    background: var(--color-white);
-    transform: scale(1.2);
+    width: 24px;
+    background: var(--gold);
   }
 }

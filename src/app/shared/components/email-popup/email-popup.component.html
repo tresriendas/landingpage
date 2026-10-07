@@ -1,9 +1,17 @@
 <dialog #dialogRef class="popup" (close)="onDialogClose()" (click)="onDialogClick($event)">
-  <button type="button" class="popup__close" aria-label="Cerrar" (click)="closeDialog()">✕</button>
+  <button type="button" class="popup__close" aria-label="Cerrar" (click)="closeDialog()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  </button>
 
   @if (status() === 'success') {
     <div class="popup__body popup__body--center">
-      <span class="popup__icon popup__icon--success" aria-hidden="true">✓</span>
+      <span class="popup__icon popup__icon--success" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12.5l4.5 4.5L19 7.5" />
+        </svg>
+      </span>
       <h2 class="popup__title">¡Registro exitoso!</h2>
       <p class="popup__text">
         Su registro se realizó correctamente. Le vamos a mantener al tanto de las novedades del
@@ -13,7 +21,7 @@
   } @else {
     <div class="popup__body">
       <p class="popup__kicker">No se pierda nada</p>
-      <h2 class="popup__title">Entérese primero de las novedades del mundo ecuestre</h2>
+      <h2 class="popup__title">Entérese primero de las novedades del <em>mundo ecuestre</em></h2>
       <p class="popup__text">
         Únase con sus datos y reciba eventos, novedades de la comunidad y ofertas de servicios
         antes que nadie.
@@ -83,7 +91,7 @@
         </div>
 
         @if (status() === 'error') {
-          <p class="popup__error">No pudimos guardar sus datos, pruebe de nuevo.</p>
+          <p class="popup__error popup__error--block">No pudimos guardar sus datos, pruebe de nuevo.</p>
         }
 
         <button type="submit" class="popup__submit" [disabled]="status() === 'loading'">

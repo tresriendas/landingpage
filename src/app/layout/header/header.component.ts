@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { ThemeSwitcherComponent } from '../../shared/components/theme-switcher/theme-switcher.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ThemeSwitcherComponent],
+  imports: [],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

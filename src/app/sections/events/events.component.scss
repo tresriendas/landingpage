@@ -2,7 +2,8 @@
 @use 'typography' as *;
 
 .events {
-  padding-block: var(--space-6);
+  padding-block: 80px;
+  background: var(--sand);
 }
 
 .events__container {
@@ -10,10 +11,7 @@
 }
 
 .events__head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-4);
+  @include section-head;
 }
 
 .events__kicker {
@@ -21,74 +19,89 @@
 }
 
 .events__title {
-  @include heading-hero;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  margin-top: var(--space-2);
-  max-width: 22ch;
+  @include section-title;
+  margin-top: 12px;
+  max-width: 26ch;
 }
 
 .btn--secondary {
-  @include button-pill(var(--color-white), var(--color-green-dark), var(--color-border));
+  @include btn(secondary);
 }
 
 .events__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-4);
+  gap: 18px;
   margin-top: var(--space-5);
 }
 
 .events__card {
   @include card;
-  padding: 0;
+  @include card-hover;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.events__card-image {
-  height: 150px;
-  flex-shrink: 0;
-  width: 100%;
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid var(--color-border);
+.events__media {
+  position: relative;
 }
 
-.events__card-body {
-  padding: var(--space-4);
+.events__card-image {
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
 }
 
 .events__date {
-  @include kicker-label;
-  color: var(--color-green-dark);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 7px 11px;
+  border-radius: var(--radius-btn);
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.events__card-body {
+  padding: 20px;
 }
 
 .events__card-title {
   @include heading-hero;
-  font-size: 1.1rem;
-  margin-top: var(--space-2);
+  font-size: 22px;
+  line-height: 1.15;
 }
 
 .events__place {
-  @include body-text;
-  font-size: 0.9rem;
-  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--gold-2);
+  }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 580px) {
   .events__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 900px) {
-  .events__head {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
+@media (min-width: 1100px) {
   .events__grid {
     grid-template-columns: repeat(4, 1fr);
   }

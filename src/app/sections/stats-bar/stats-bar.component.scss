@@ -1,26 +1,56 @@
+@use 'mixins' as *;
 @use 'typography' as *;
 
+:host {
+  display: block;
+  border-top: 1px solid rgba(201, 161, 91, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .stats {
-  display: flex;
-  gap: var(--space-6);
-  flex-wrap: wrap;
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-block: 28px;
 }
 
 .stats__item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  align-items: center;
+  gap: 10px;
+  padding-inline: var(--space-3);
+  text-align: center;
+
+  & + & {
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+  }
 }
 
 .stats__value {
   @include stat-number;
-  font-size: 2rem;
+  color: var(--gold);
 }
 
 .stats__label {
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 580px) {
+  .stats__value {
+    font-size: 34px;
+  }
+
+  .stats__label {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+  }
+
+  .stats__item {
+    padding-inline: var(--space-2);
+  }
 }

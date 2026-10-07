@@ -1,11 +1,14 @@
 @use 'mixins' as *;
 
 .header {
-  background: var(--color-green-dark);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   position: sticky;
   top: 0;
   z-index: 40;
+  background: rgba(14, 28, 47, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 10px 30px rgba(14, 28, 47, 0.45);
 }
 
 .header__bar {
@@ -14,47 +17,60 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  padding-block: var(--space-3);
+  height: var(--header-height);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 14px;
   text-decoration: none;
   min-width: 0;
 }
 
 .brand__icon {
-  @include icon-badge;
-  width: 60px;
-  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 20%;
+  background: var(--cream);
+  border: 1px solid rgba(201, 161, 91, 0.45);
+  overflow: hidden;
 
-  svg {
-    width: 24px;
-    height: 24px;
+  /* El logo incluye el wordmark: se encuadra solo la cabeza del caballo. */
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(1.8);
+    transform-origin: 50% 26%;
   }
 }
 
 .brand__text {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  line-height: 1.1;
   min-width: 0;
 }
 
 .brand__name {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--color-white);
-  font-size: 1rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  color: var(--white);
 }
 
 .brand__tagline {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,37 +78,57 @@
 
 .nav {
   display: flex;
-  gap: var(--space-5);
+  gap: 36px;
 }
 
 .nav__link {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--color-white);
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.86);
   text-decoration: none;
+  padding-block: 6px;
+  transition: color 0.2s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
 
   &:hover {
-    color: var(--color-gold-light);
+    color: var(--white);
+
+    &::after {
+      transform: scaleX(1);
+    }
   }
 }
 
 .header__actions {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 10px;
 }
 
 .icon-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-pill);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-btn);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
-  font-weight: 700;
-  transition: transform 0.15s ease;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
 
   &:hover {
     transform: translateY(-1px);
@@ -100,23 +136,32 @@
 }
 
 .icon-btn--outline {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  color: var(--color-white);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--white);
+
+  &:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
 }
 
 .icon-btn--gold {
-  background: var(--color-gold);
-  color: var(--color-white);
+  background: var(--gold);
+  color: var(--navy);
+
+  &:hover {
+    background: #d6b06c;
+  }
 }
 
 .menu-toggle {
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-pill);
-  border: none;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
-  color: var(--color-white);
+  color: var(--white);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -126,16 +171,37 @@
 .nav--mobile {
   flex-direction: column;
   gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--navy);
+  border-top: 1px solid rgba(201, 161, 91, 0.18);
 
   .nav__link {
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding: var(--space-3) 4vw;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      color: var(--gold);
+    }
   }
 }
 
 .nav--desktop {
   display: none !important;
+}
+
+@media (max-width: 580px) {
+  .brand__name {
+    font-size: 22px;
+  }
+
+  .brand__icon {
+    width: 62px;
+    height: 62px;
+  }
 }
 
 @media (min-width: 900px) {

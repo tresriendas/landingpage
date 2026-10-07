@@ -2,7 +2,8 @@
 @use 'typography' as *;
 
 .community {
-  padding-block: var(--space-6);
+  padding-block: 80px;
+  background: var(--sand);
 }
 
 .community__container {
@@ -14,10 +15,9 @@
 }
 
 .community__title {
-  @include heading-hero;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  margin-top: var(--space-2);
-  max-width: 24ch;
+  @include section-title;
+  margin-top: 12px;
+  max-width: 26ch;
 }
 
 .community__lead {
@@ -29,26 +29,36 @@
 .community__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-4);
+  gap: 18px;
   margin-top: var(--space-5);
 }
 
 .community__card {
   @include card;
+  @include card-hover;
   position: relative;
   overflow: hidden;
+  padding: 28px 24px 36px;
+  border-top: 2px solid var(--gold);
+
+  &:hover .community__card-watermark {
+    opacity: 0.16;
+    transform: rotate(-8deg) scale(1.04);
+  }
 }
 
+/* Ícono representativo de cada perfil, como marca de agua en la esquina. */
 .community__card-watermark {
   position: absolute;
-  right: -18px;
-  bottom: -18px;
-  width: 120px;
-  height: 120px;
-  color: var(--color-green-dark);
-  opacity: 0.08;
+  right: -20px;
+  bottom: -20px;
+  width: 130px;
+  height: 130px;
+  color: var(--navy);
+  opacity: 0.09;
+  transform: rotate(-8deg);
   pointer-events: none;
-  z-index: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 
   svg {
     width: 100%;
@@ -56,23 +66,26 @@
   }
 }
 
-.community__card-title {
-  @include heading-hero;
-  font-size: 1.15rem;
-  margin-top: var(--space-3);
+.community__card-title,
+.community__card-text {
   position: relative;
   z-index: 1;
+}
+
+.community__card-title {
+  @include heading-hero;
+  font-size: 22px;
+  line-height: 1.15;
 }
 
 .community__card-text {
   @include body-text;
-  font-size: 0.95rem;
-  margin-top: var(--space-2);
-  position: relative;
-  z-index: 1;
+  font-size: 14px;
+  margin-top: 10px;
+  max-width: 30ch;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 580px) {
   .community__grid {
     grid-template-columns: repeat(2, 1fr);
   }

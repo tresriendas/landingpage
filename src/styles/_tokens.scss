@@ -1,30 +1,32 @@
 :root {
-  --color-cream: #f7f5f0;
-  --color-cream-alt: #fbfaf7;
-  --color-green-dark: #1b3a2e;
-  --color-green-darker: #12281f;
-  --color-blanco-antiguo: #FAEBD7;
-  --color-gold: #b8863a;
-  --color-gold-light: #d9a857;
-  --color-text-body: #5c5c5c;
-  --color-text-muted: #8a8a8a;
-  --color-white: #ffffff;
-  --color-border: #e4e0d8;
+  /* Azul náutico: color de marca (header, footer, hero, bandas oscuras, titulares). */
+  --navy: #0e1c2f;
+  --navy-2: #16294a;
+  --navy-3: #1f3558;
+  --ink: #16202e;
+  --muted: #6b7382;
+  --sand: #f3ece0;
+  --cream: #faf6ef;
+  --gold: #c9a15b;
+  --gold-2: #b88d45;
+  --gold-soft: #f4e9d4;
+  --tint: #f1ebe0;
+  --line: #e6dfd2;
+  --white: #fff;
+  --success: #5f8d68;
+  --danger: #b75f52;
 
-  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-lilita: 'Lilita One', cursive;
-  --font-nunito: 'Nunito', sans-serif, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
-  --font-script: 'Yellowtail', cursive;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', system-ui, sans-serif;
 
-  /* Colores fijos de cada estilo, para mostrarlos en el selector sin importar cuál esté activo. */
-  --color-swatch-clasico: #1b3a2e;
-  --color-swatch-nautico: #142c4d;
-
+  --radius: 14px;
+  --radius-btn: 8px;
+  --radius-input: 10px;
+  --radius-modal: 18px;
   --radius-pill: 999px;
-  --radius-lg: 28px;
-  --radius-md: 16px;
-  --radius-sm: 10px;
+
+  --shadow: 0 12px 34px rgba(14, 28, 47, 0.08);
+  --shadow-hover: 0 18px 40px rgba(14, 28, 47, 0.14);
 
   --space-1: 4px;
   --space-2: 8px;
@@ -34,13 +36,11 @@
   --space-6: 64px;
   --space-7: 96px;
 
-  --shadow-sm: 0 2px 8px rgba(27, 58, 46, 0.08);
-  --shadow-md: 0 8px 24px rgba(27, 58, 46, 0.12);
-
-  --container-max: 1180px;
+  --header-height: 150px;
 }
 
-:root[data-theme='nautico'] {
-  --color-green-dark: #142c4d;
-  --color-green-darker: #0b1c33;
+@media (max-width: 960px) {
+  :root {
+    --header-height: 84px;
+  }
 }
