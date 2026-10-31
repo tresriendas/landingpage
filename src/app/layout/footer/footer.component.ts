@@ -18,9 +18,9 @@ export class FooterComponent {
 
   /** Reemplazar cada href por el link real de cada red cuando estén disponibles. */
   readonly socialLinks: SocialLink[] = [
-    { label: 'Facebook', href: '#', icon: 'facebook' },
-    { label: 'Instagram', href: '#', icon: 'instagram' },
-    { label: 'LinkedIn', href: '#', icon: 'linkedin' },
+    { label: 'Facebook', href: 'https://www.facebook.com/people/Equestris/61596083551490/', icon: 'facebook' },
+    { label: 'Instagram', href: 'https://www.instagram.com/equetrisin', icon: 'instagram' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/equestris-tres-riendas', icon: 'linkedin' },
   ];
 
   readonly platformLinks = [
